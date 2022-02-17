@@ -28,25 +28,10 @@ export default {
   data() {
     return {
       selectedTab: 'stored-resources',
-      storedResources: [
-        {
-          id: 'official-guide',
-          title: 'Official Guide',
-          description: 'The official Vue JS documentation',
-          link: 'https://vuejs.org',
-        },
-        {
-          id: 'google',
-          title: 'Google',
-          description: 'Learn to google it!',
-          link: 'https://google.com',
-        },
-      ],
     };
   },
   provide() {
     return {
-      resources: this.storedResources,
       addResource: this.addResource,
       deleteResource: this.removeResource,
     };
@@ -62,12 +47,12 @@ export default {
         description: description,
         link: url,
       };
-      this.storedResources.unshift(newResource);
+      this.$store.state.resources.unshift(newResource);
       this.selectedTab = 'stored-resources';
     },
     removeResource(resId) {
-      const resIndex = this.storedResources.findIndex(res => res.id === resId);
-      this.storedResources.splice(resIndex, 1);
+      const resIndex = this.$store.state.resources.findIndex(res => res.id === resId);
+      this.$store.state.resources.splice(resIndex, 1);
     },
   },
   computed: {
