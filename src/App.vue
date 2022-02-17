@@ -1,5 +1,5 @@
 <template>
-  <TheHeader title="Remember To Learn" />
+  <TheHeader title="Learn Me" />
   <TheResources />
 </template>
 
